@@ -2,25 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public struct StateDictionary
-{
-    [SerializeField]
-    public string stateName;
-    [SerializeField]
-    public State state;
-}
-
-
 //class handles switching between states, and acts as the interface for stats
 public class StateMachine : MonoBehaviour {
 
     //Stack<State> states;
 
-    [SerializeField]
-    StateDictionary[] dictionary;
-
-   private Hashtable possibleStates;
 
     private Stack<State> states;
     [SerializeField]
@@ -29,7 +15,8 @@ public class StateMachine : MonoBehaviour {
     [SerializeField]
     State defaultState;
 
-    List<State> newStates;
+    [SerializeField]
+    State[] AllStates;
 
     [SerializeField]
     PlayerCharacter Controller;
@@ -38,26 +25,15 @@ public class StateMachine : MonoBehaviour {
 		
 	}
 
-    //converst our list into a hashtable for easy look up later
-    void BuildHashTable()
-    {
-        possibleStates = new Hashtable();
-
-        foreach(StateDictionary dic in dictionary)
-        {
-            if (possibleStates.ContainsKey(dic.stateName))
-                continue;
-
-            possibleStates.Add(dic.stateName, dic.state);
-        }
-    }
-
     void Awake()
     {
-        BuildHashTable();
-
         states = new Stack<State>();
-        newStates = new List<State>();
+       
+
+        foreach(State stt in AllStates)
+        {
+            stt.Activated();
+        }
 
         //handle initialization of dynamic states
         
@@ -69,41 +45,19 @@ public class StateMachine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        activeState.HandleInput(Controller);
-        activeState.HandleUpdate(Controller);
+        activeState.HandleInput(Controller, this);
+        activeState.HandleUpdate(Controller,this);
     }
 
     void FixedUpdate()
     {
         activeState.HandleFixedUpdate(Controller);
     }
+
+
     //end of the tick check if we need to change states
     void LateUpdate()
     {
-        ChangeStates();
-    }
-    void ChangeStates()
-    {
-        //iterate through the possible state changes that have occured
-        //the highest value state is the state that is changed too
-        State bestState = null;
-
-        foreach(State possibleState in newStates)
-        {
-            if(!bestState)
-            {
-                bestState = possibleState;
-                continue;
-            }
-            if(possibleState && possibleState.PriorityLevel > bestState.PriorityLevel)
-            {
-                bestState = possibleState;
-            }
-        }
-
-        if (bestState)
-            PushState(bestState, Controller);
-
     }
 
     public State GetCurrentState()
@@ -111,17 +65,8 @@ public class StateMachine : MonoBehaviour {
         return activeState;
     }
 
-    public void AddNewState(State newState)
-    {
-        //dont add duplicate states
-        if (newStates.Contains(newState))
-            return;
-
-        newStates.Add(newState);
-    }
-
     //push a new state to the stack
-    bool PushState(State newState, PlayerCharacter Controller)
+    public bool PushState(State newState, PlayerCharacter Controller)
     {
         if (!newState)
             return false;
@@ -144,7 +89,7 @@ public class StateMachine : MonoBehaviour {
     }
     
     //remove a state from the stack
-    bool PopState(State oldState, PlayerCharacter Controller)
+    public bool PopState(State oldState, PlayerCharacter Controller)
     {
         //if there is no  active state, then dont pop anything
         if (activeState == null)

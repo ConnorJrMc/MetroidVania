@@ -12,18 +12,24 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "States/GroundedState")]
 public class GroundedState : State {
-    public override void HandleInput(PlayerCharacter Controller)
+    public override void HandleInput(PlayerCharacter Controller, StateMachine machine)
     {
         //the different input that you can handle while in the grounded state
-        //move left and right
-        Controller.GroundedHorizontalMovement(true);
-        Controller.CheckForGrounded();
-        if(Controller.CheckForJumpInput())
-            Controller.SetVerticalMovement(Controller.jumpSpeed);
+        //handle jump logic
+        if (Controller.CheckForJumpInput())
+        {
+            if(machine.PushState((State)(nextStates["InAirState"]), Controller))
+                Controller.SetVerticalMovement(Controller.jumpSpeed);
+        }
     }
-    public override void HandleUpdate(PlayerCharacter Controller)
+    public override void HandleUpdate(PlayerCharacter Controller,StateMachine machine)
     {
+        Controller.GroundedHorizontalMovement(true);
 
+        if(!Controller.CheckForGrounded())
+        {
+            machine.PushState((State)(nextStates["InAirState"]), Controller);
+        }
     }
     public override void HandleFixedUpdate(PlayerCharacter Controller)
     {

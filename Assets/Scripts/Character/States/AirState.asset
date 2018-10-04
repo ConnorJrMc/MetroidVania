@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70eafdfb066de2545919dcb7d02d1eff, type: 3}
   m_Name: AirState
   m_EditorClassIdentifier: 
-  transitionableStates: []
-  PriorityLevel: 0
+  transitionAbleStates:
+  - {fileID: 11400000, guid: 8301ad8a63bddab45bc6a91022ad9bed, type: 2}

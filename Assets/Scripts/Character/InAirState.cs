@@ -5,17 +5,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "States/AirState")]
 public class InAirState : State
 {
-    public override void HandleInput(PlayerCharacter Controller)
-    {
-        //the different input that you can handle while in the grounded state
-        //move left and right
-        Controller.AirborneHorizontalMovement();
-        Controller.AirborneVerticalMovement();
-        Controller.CheckForGrounded();
-    }
-    public override void HandleUpdate(PlayerCharacter Controller)
+    public override void HandleInput(PlayerCharacter Controller, StateMachine machine)
     {
 
+    }
+
+
+    public override void HandleUpdate(PlayerCharacter Controller, StateMachine machine)
+    {
+       if(Controller.CheckForGrounded())
+       {
+            machine.PushState((State)(nextStates["GroundedState"]), Controller);
+       }
+
+       Controller.AirborneHorizontalMovement();
+       Controller.AirborneVerticalMovement();
     }
     public override void HandleFixedUpdate(PlayerCharacter Controller)
     {

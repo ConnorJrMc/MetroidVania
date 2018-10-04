@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598640d8137b4a142ab1a8f28511d724, type: 3}
   m_Name: GroundState
   m_EditorClassIdentifier: 
-  transitionableStates: []
-  PriorityLevel: 0
+  transitionAbleStates:
+  - {fileID: 11400000, guid: 33fb3e608defa61448209c40fac99c82, type: 2}

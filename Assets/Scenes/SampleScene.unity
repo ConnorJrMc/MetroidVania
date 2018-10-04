@@ -340,24 +340,6 @@ Transform:
   m_Father: {fileID: 1108323795}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &737676345 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114436136157930280, guid: 5beaa3aab40b86149be4b222c97b16de,
-    type: 2}
-  m_PrefabInternal: {fileID: 1507023993}
-  m_Script: {fileID: 11500000, guid: a198360f43dabb8489851960054c715e, type: 3}
---- !u!114 &737676346 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-    type: 2}
-  m_PrefabInternal: {fileID: 1507023993}
-  m_Script: {fileID: 11500000, guid: 863861c099c21944c90ccc4830de7c27, type: 3}
---- !u!114 &810869992 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114840158095186760, guid: 5beaa3aab40b86149be4b222c97b16de,
-    type: 2}
-  m_PrefabInternal: {fileID: 1507023993}
-  m_Script: {fileID: 11500000, guid: 13f2abeda8a3dc54b987c2c1d2f670f7, type: 3}
 --- !u!1 &987013439
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,11 +419,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: dictionary.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4003073180813362, guid: 5beaa3aab40b86149be4b222c97b16de, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.38137978
@@ -474,49 +451,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114436136157930280, guid: 5beaa3aab40b86149be4b222c97b16de,
+    - target: {fileID: 50296811704583184, guid: 5beaa3aab40b86149be4b222c97b16de,
         type: 2}
-      propertyPath: m_CharacterController2D
-      value: 
-      objectReference: {fileID: 810869992}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: defaultState
-      value: 
-      objectReference: {fileID: 11400000, guid: 8301ad8a63bddab45bc6a91022ad9bed,
-        type: 2}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: Controller
-      value: 
-      objectReference: {fileID: 737676345}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: dictionary.Array.data[0].state
-      value: 
-      objectReference: {fileID: 11400000, guid: 8301ad8a63bddab45bc6a91022ad9bed,
-        type: 2}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: dictionary.Array.data[0].stateName
-      value: GroundState
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: dictionary.Array.data[1].stateName
-      value: AirState
-      objectReference: {fileID: 0}
-    - target: {fileID: 114598133712256538, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: dictionary.Array.data[1].state
-      value: 
-      objectReference: {fileID: 11400000, guid: 33fb3e608defa61448209c40fac99c82,
-        type: 2}
-    - target: {fileID: 114436136157930280, guid: 5beaa3aab40b86149be4b222c97b16de,
-        type: 2}
-      propertyPath: machine
-      value: 
-      objectReference: {fileID: 737676346}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5beaa3aab40b86149be4b222c97b16de, type: 2}
   m_IsPrefabAsset: 0

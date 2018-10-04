@@ -91,7 +91,7 @@ Animator:
   m_GameObject: {fileID: 1540516116776626}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 508831994153b8449a397b5166b155a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee967d3bac99c3146ae3936bee85271d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputType: 1
+  inputType: 0
   Pause:
     key: 64
     controllerButton: 8
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a198360f43dabb8489851960054c715e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  machine: {fileID: 114598133712256538}
+  m_CharacterController2D: {fileID: 114840158095186760}
   spriteRenderer: {fileID: 212000103805691944}
   facingLeftBulletSpawnPoint: {fileID: 0}
   facingRightBulletSpawnPoint: {fileID: 0}
@@ -174,7 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863861c099c21944c90ccc4830de7c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeState: {fileID: 0}
   defaultState: {fileID: 11400000, guid: 8301ad8a63bddab45bc6a91022ad9bed, type: 2}
+  AllStates:
+  - {fileID: 11400000, guid: 8301ad8a63bddab45bc6a91022ad9bed, type: 2}
+  - {fileID: 11400000, guid: 33fb3e608defa61448209c40fac99c82, type: 2}
   Controller: {fileID: 114436136157930280}
 --- !u!114 &114840158095186760
 MonoBehaviour:

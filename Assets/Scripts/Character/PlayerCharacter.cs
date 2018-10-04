@@ -49,6 +49,11 @@ public class PlayerCharacter : MonoBehaviour {
 
 
     protected TileBase m_CurrentSurface;
+
+    void Awake()
+    {
+        m_Animator = GetComponent<Animator>();
+    }
     // Use this for initialization
     void Start () {
 		
